@@ -4,7 +4,14 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { cn } from "@/lib/cn";
 
-const TIERS = [
+const TIERS: ReadonlyArray<{
+  id: "free" | "pro" | "team";
+  name: string;
+  price: string;
+  cadence: string;
+  bullets: readonly string[];
+  highlight?: boolean;
+}> = [
   {
     id: "free",
     name: "Free",
@@ -27,7 +34,7 @@ const TIERS = [
     cadence: "/ month",
     bullets: ["5,000 messages / day", "240 requests / minute", "Shared workspace"],
   },
-] as const;
+];
 
 export function Pricing() {
   const { data: session } = useSession();
