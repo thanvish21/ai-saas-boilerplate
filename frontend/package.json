@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@auth/core": "^0.37.0",
     "@stripe/stripe-js": "^4.8.0",
     "clsx": "^2.1.1",
     "lucide-react": "^0.453.0",
