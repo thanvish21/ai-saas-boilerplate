@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from fastapi import APIRouter, Depends, Header, HTTPException, Request
 from sqlalchemy import select
@@ -37,7 +37,7 @@ async def _upsert_subscription(db: AsyncSession, customer_id: str, data: dict) -
     sub.tier = tier
     sub.status = status_
     sub.current_period_end = (
-        datetime.fromtimestamp(current_period_end, tz=timezone.utc) if current_period_end else None
+        datetime.fromtimestamp(current_period_end, tz=UTC) if current_period_end else None
     )
     await db.commit()
 

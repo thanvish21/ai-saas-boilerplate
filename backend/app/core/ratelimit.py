@@ -4,7 +4,7 @@ import time
 from collections.abc import AsyncGenerator
 
 import redis.asyncio as redis
-from fastapi import Depends, HTTPException, status
+from fastapi import HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.config import settings

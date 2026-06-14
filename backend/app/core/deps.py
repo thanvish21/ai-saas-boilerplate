@@ -3,8 +3,8 @@ from __future__ import annotations
 import uuid
 
 from fastapi import Depends, Header, HTTPException, status
-from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.ratelimit import get_db
 from app.core.security import decode_token

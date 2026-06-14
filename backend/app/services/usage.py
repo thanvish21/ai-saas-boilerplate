@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import uuid
-from datetime import datetime, timedelta, timezone
+from datetime import UTC, datetime, timedelta
 
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -40,7 +40,7 @@ async def record_usage(
 
 
 async def daily_summary(db: AsyncSession, user_id: uuid.UUID, tier: Tier) -> dict[str, int | str]:
-    since = datetime.now(timezone.utc) - timedelta(days=1)
+    since = datetime.now(UTC) - timedelta(days=1)
     q = select(
         func.count(UsageLog.id),
         func.coalesce(func.sum(UsageLog.input_tokens), 0),
